@@ -1,0 +1,39 @@
+.qrcode-footer{
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.qrcode-footer .Two2{
+    background-image: url(../images/22.jpg);
+    background-size: cover;
+    width: 135px;
+    height: 145px;
+}
+
+.qrcode-footer .Three3{
+    background-image: url(../images/33.jpg);
+    background-size: cover;
+    width: 135px;
+    height: 145px;
+}
+
+.txt{
+    padding-top: 1.2em;
+}
+
+.status-txt{
+   font-size: 1.2em;
+   letter-spacing: 3px;
+   vertical-align: middle;
+}
+
+.app-link{
+    font-size: 0.85em;
+}
+  
+.app-link a{
+    color: #00a1d6;
+    text-decoration: none;
+}

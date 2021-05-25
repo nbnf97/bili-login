@@ -1,0 +1,78 @@
+.qrcode-con{
+    display: flex;
+    flex-direction: column;
+}
+
+.qrcode-con .tv-icon{
+    margin:0 auto;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background-image: url(../images/tv-icon.jpg);
+    background-size: cover;
+}
+
+.qrcode-con .qrcode-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.qrcode-box .qrcode-tips{
+    z-index: 10;    /* 指定元素的堆叠顺序 数字大的 遮住 数字小的 */
+
+    position: absolute; /* 元素采用绝对位置 */
+    /* position为absolute下的居中 */
+    left: 50%;  /* 规定元素左边缘（元素左外边距与其包含块左边界之间的偏移） */
+    transform: translateX(-50%);    /* X轴方向平移 */
+    top: -50px; /* 向上移动-50px 挡住.tv-icon */
+    
+    width: 480px;
+    height: 192px;
+    
+    background-image: url(../images/scan-guide.png);
+    background-size: cover; /* bk-img自动拉伸覆盖*/
+    background-color: #fff;
+
+    opacity: 0; /* 透明度为0（完全透明）*/
+    transition: opacity 0.5s; /* 设置透明度的过渡 需要花费1s */
+}
+
+.qrcode-box:hover .qrcode-tips{
+    opacity: 1; /* 透明度为1（完全不透明）*/
+}
+
+.qrcode-box .qrcode-img{
+    width: 140px;
+    height: 140px;
+    background-image: url(../images/scan-QRcode.jpg);
+    background-size: cover;
+}
+
+.qrcode-box .status{
+    position: absolute;
+    z-index: 20;
+    width: 140px;
+    height: 140px;
+    top: 0;
+    background-color: hsla(0,0%,100%,.8);   /* 颜色hsla表示 色调、饱和度、亮度、透明度 */
+}
+
+.status .overdue{
+    /* bg-color bg-image position/bg-size bg-repeat  */
+    background: #fff url(../images/refresh.png) 3px 3px no-repeat ; /* 水平位置 垂直位置*/
+    border-radius: 3px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 50%);
+    cursor: pointer;    /* 光标（鼠标移入时 */
+    margin: 40px auto;  
+    width: 60px;
+    padding: 40px 0 5px;
+    color: #0594c7;
+    text-align: center;
+}
+
+.hidden{
+    display: none;
+}
