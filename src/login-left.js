@@ -2,20 +2,16 @@ import React from 'react'
 
 import './styles/qrcode-footer.css'
 import './styles/qrcode-con.css'
+
 /*
-    QRcode-Con
-        tip图和二维码的切换（mousemove） http://js.jirengu.com/lulozerixi/2/edit?html,css,js,output
-        二维码加载动画
-        扫描成功情况
+    Login-Left
+        二维码加载动画（con图片 footer文字）
+        扫描成功情况（con图片 footer文字）
 */
 
-class QRcodeCon extends React.Component{
-    constructor(){
-        super()
-        this.state = {
-            isQRcodeLoaded: true,
-            isTimeOver: false,
-        }
+class LoginLeft extends React.Component{
+    state = {
+        isTimeOver: false
     }
 
     componentDidMount(){
@@ -29,21 +25,70 @@ class QRcodeCon extends React.Component{
         )
     }
 
-    handleRefresh = () =>{
+    getRefreshMsg =(msg)=>{
         this.setState({
-            isTimeOver: false
+            isTimeOver: !msg
         })
         this.tick()
     }
 
+    render(){
+        return (
+            <div className="login-left">
+                <QRcodeCon timer={this.state.isTimeOver}
+                            getMsg={this.getRefreshMsg}
+                />
+                <QRcodeFooter timer={this.state.isTimeOver}/>
+            </div>
+        )
+    }
+}
+
+/*
+    QRcode-Con
+*/
+
+class QRcodeCon extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            isQRcodeLoaded: true,
+            refresh: true,
+            qrcodeBox: "qrcode-box"
+        }
+    }
+
+    handleRefresh = () =>{
+        this.props.getMsg(this.state.refresh)
+    }
+
+    handleMouseEnter = () =>{
+        if (!this.props.timer){
+            this.setState({
+                qrcodeBox: "qrcode-box hover"
+            })
+        }
+    }
+
+    handleMouseLeave = () =>{
+        if (!this.props.timer){
+            this.setState({
+                qrcodeBox: "qrcode-box"
+            })
+        }
+    }
+
     render() {
+        console.log(this.props)
         return(
             <div className="qrcode-con">
                 <div className="tv-icon" />
-                <div className="qrcode-box" >
-                    <div className="qrcode-tips" />
+                <div className={this.state.qrcodeBox} 
+                    onMouseEnter={this.handleMouseEnter}
+                    onMouseLeave={this.handleMouseLeave}>
+                    <div className="qrcode-tips " />
                     <div className="qrcode-img" />
-                    <Status show={this.state} refresh={this.handleRefresh} />
+                    <Status show={this.props} refresh={this.handleRefresh} />
                 </div>
             </div>
         )
@@ -53,7 +98,7 @@ class QRcodeCon extends React.Component{
 const Status = (props) =>{
     const show = "status"
     const hidden = "status hidden"
-    const className = props.show.isTimeOver ? show : hidden
+    const className = props.show.timer ? show : hidden
 
     return (
         <div className={className} >
@@ -63,15 +108,17 @@ const Status = (props) =>{
 }
 /*
     QRcode-Footer
-    
 */
 class QRcodeFooter extends React.Component{
+    constructor(props){
+        super(props)
+    }
     render(){
         return(
             <div className="qrcode-footer">
                 <div className="Two2"></div>
                 <div className="txt">
-                    <StatusTxt />
+                    <StatusTxt timer={this.props.timer}/>
                     <AppLink />
                 </div>
                 <div className="Three3"></div>
@@ -81,8 +128,7 @@ class QRcodeFooter extends React.Component{
 }
 
 const StatusTxt = (props) => {
-    const isTimeOver = false
-    if (isTimeOver){
+    if (props.timer){
         return (
             <div className="status-txt">二维码已失效</div>
         )
@@ -102,17 +148,6 @@ const AppLink = (props) =>{
     )
 }
 
-/*
-    Login-Left
-*/
 
-const LoginLeft = () =>{
-    return (
-        <div className="login-left">
-            <QRcodeCon />
-            <QRcodeFooter />
-        </div>
-    )
-}
 
 export default LoginLeft;

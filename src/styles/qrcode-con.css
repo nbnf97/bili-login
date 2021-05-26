@@ -34,7 +34,7 @@
     transition: opacity 0.5s;
 }
 
-.qrcode-box:hover .qrcode-tips{
+.hover .qrcode-tips{
     opacity: 1; /* 透明度为1（完全不透明）*/
 }
 
