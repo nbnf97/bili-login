@@ -16,28 +16,22 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
 .qrcode-box .qrcode-tips{
-    z-index: 10;    /* 指定元素的堆叠顺序 数字大的 遮住 数字小的 */
-
-    position: absolute; /* 元素采用绝对位置 */
-    /* position为absolute下的居中 */
-    left: 50%;  /* 规定元素左边缘（元素左外边距与其包含块左边界之间的偏移） */
-    transform: translateX(-50%);    /* X轴方向平移 */
-    top: -50px; /* 向上移动-50px 挡住.tv-icon */
-    
+    z-index: 10;    
+    position: absolute; 
+    left: 50%;  
+    transform: translateX(-50%);   
+    top: -50px; 
     width: 480px;
     height: 192px;
-    
     background-image: url(../images/scan-guide.png);
-    background-size: cover; /* bk-img自动拉伸覆盖*/
+    background-size: cover; 
     background-color: #fff;
-
-    opacity: 0; /* 透明度为0（完全透明）*/
-    transition: opacity 0.5s; /* 设置透明度的过渡 需要花费1s */
+    opacity: 0; 
+    transition: opacity 0.5s;
 }
 
 .qrcode-box:hover .qrcode-tips{

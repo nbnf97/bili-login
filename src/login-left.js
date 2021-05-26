@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 import './styles/qrcode-footer.css'
 import './styles/qrcode-con.css'
 /*
@@ -9,35 +8,59 @@ import './styles/qrcode-con.css'
         二维码加载动画
         扫描成功情况
 */
+
 class QRcodeCon extends React.Component{
-    state = {
-        isHidden: false,
+    constructor(){
+        super()
+        this.state = {
+            isQRcodeLoaded: true,
+            isTimeOver: false,
+        }
+    }
+
+    componentDidMount(){
+        this.tick()
+    }
+
+    tick(){
+        setTimeout(
+            ()=>{this.setState({isTimeOver: true,})},
+            3000
+        )
+    }
+
+    handleRefresh = () =>{
+        this.setState({
+            isTimeOver: false
+        })
+        this.tick()
     }
 
     render() {
-        const statusHidden = "hidden"
-        
         return(
             <div className="qrcode-con">
                 <div className="tv-icon" />
-                <div className="qrcode-box">
-                    <div className="qrcode-tips"></div>
-                    <div className="qrcode-img"></div>
-                    <Status />
+                <div className="qrcode-box" >
+                    <div className="qrcode-tips" />
+                    <div className="qrcode-img" />
+                    <Status show={this.state} refresh={this.handleRefresh} />
                 </div>
             </div>
         )
     }
 }
 
-const Status = () =>{
+const Status = (props) =>{
+    const show = "status"
+    const hidden = "status hidden"
+    const className = props.show.isTimeOver ? show : hidden
+
     return (
-        <div className="status hidden">
-            <div class="overdue">点击刷新</div>
+        <div className={className} >
+            <div class="overdue" onClick={props.refresh}>点击刷新</div>
         </div>
     )
 }
-
 /*
     QRcode-Footer
     
