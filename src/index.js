@@ -2,6 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import LoginLeft from './login-left'
+import LoginRight from './login-right'
+
+import './styles/index.css'
+
+class LoginApp extends React.Component{
+    render(){
+        return(
+            <div className="login-app">
+                <TitleLine />
+                <LoginBox />
+            </div>
+        )
+    }
+}
 
 const Loading = () =>{
     return (
@@ -12,32 +26,24 @@ const Loading = () =>{
     )
 }
 
-// class LoginForm extends React.Component{
-//     constructor(){
-//         super();
-//         this.state = {};
-//     }
-    
-//     render(){
-//         return(
-//             <div>
-//                 <TypeTab />
-//                 <Username />
-//                 <Password />
-//             </div>
-//         )
-//     }
-// }
+const TitleLine = () =>{
+    return (
+        <div className="title-line">
+            <span className="tit" style={{fontSize: "38px"}}>登录</span>
+        </div>
+    )
+}
 
-// const LoginRight = () =>{
-//     return (
-//         <div className="login-right">
-//             <LoginForm />
-//             <Remember />
-//             <BtnBox />
-//             <SnsBox />
-//         </div>
-//     )
-// }
+const LoginBox = () =>{
+    return (
+        <div className="login-box clearfix">
+            <LoginLeft />
+            <div className="line"></div>
+            <LoginRight />
+        </div>
+    )
+}
 
-ReactDOM.render(<LoginLeft />, document.getElementById('root'))
+
+
+ReactDOM.render(<LoginApp />, document.getElementById('root'))

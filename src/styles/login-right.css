@@ -1,0 +1,209 @@
+/* */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div{
+    display: block;
+}
+
+p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+/* TypeTab*/
+.type-tab{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    
+}
+
+.type-tab>span.active{
+    color: #02a7de;
+}
+
+.type-tab>span{
+    font-size: 14px;
+    color: #555;
+    letter-spacing: 0;
+    margin-right: 20px;
+}
+
+/* Username & Password*/
+.item input{
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    padding: 10px;
+    margin-top: 10px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 4px;
+    /* outline: none; */
+}
+.text{
+    margin: 2px 0;
+    font-size: 10px;
+}
+
+.text .tips{
+    color: #f66495;
+    float: left;
+}
+.status-box{
+    position: relative;
+}
+
+.status-box .status.error{
+    display: block;
+    background-position: -37px -38px;
+}
+
+.status-box .status {
+    display: none;
+    position: absolute;
+    top: 8px;
+    right: -25px;
+    width: 20px;
+    height: 20px;
+}
+
+/* Remember */
+.remember{
+    margin: 10px 0;
+    color: #717171;
+    width: 480px;
+    font-size: 12px;
+}
+
+.remember .remember-tool{
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember .remember-tool>label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.remember input{
+    margin-right: 8px;
+}
+
+.remember .remember-tool>label .remember-check{
+    margin-right: 8px;
+}
+
+.checkbox-bwxr{
+    display: inline-block;
+    background-color: white;
+    background-size: 14px 14px;
+    background-position: 50%;
+    cursor: pointer;
+}
+
+.remember span{
+    color: #bbb;
+    margin-left: 10px;
+}
+
+.remember .forget-password{
+    float: right;
+}
+
+.remember .not-checkout{
+    float: right;
+    margin-right: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: #00a1d6;
+}
+
+/* BtnBox */
+.btn-box{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.btn-box .btn{
+    color: #555;
+    display: inline-block;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 184px;
+    line-height: 38px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.btn-box .btn-login{
+    border: 1px solid #0381aa;
+    color: white;
+    background-color: #00a7de;
+}
+
+/* SNS */
+.sns{
+    padding: 12px 0;
+    font-size: 12px;
+    display: flex;
+}
+
+.sns .btn{
+    color: #717171;
+    cursor: pointer;
+}
+
+.sns .btn.weixin:before{
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background-image: url(../images/weixin.png);
+    background-size: cover;
+}
+
+.sns .btn.qq:before{
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background-image: url(../images/qq.png);
+    background-size: cover;
+}
+
+.sns .btn.weibo:before{
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background-image: url(../images/weibo.png);
+    background-size: cover;
+}
+
+.sns .btn.qq{
+    margin-left: 20px;
+}
+
+.sns .btn.weibo{
+    margin-left: 20px;
+}
